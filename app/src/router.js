@@ -13,17 +13,10 @@ export default new Router({
       component: () => import('./views/login/index')
     },
     {
-      path: '/',
-      component: Layout,
-      redirect: '/dashboard',
-      children: [
-        {
-          path: 'dashboard',
-          component: () => import('@/views/dashboard/index'),
-          name: 'Dashboard',
-          meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-        }
-      ]
+      path: '/dashboard',
+      component: () => import('@/views/dashboard/index'),
+      name: 'Dashboard',
+      meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
     }
   ]
 })

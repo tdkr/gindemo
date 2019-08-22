@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" label-position="left" ref="loginForm" :model="loginForm">
+    <el-form ref="loginForm" class="login-form" label-position="left" :model="loginForm">
       <div class="title-container">
         <h3 class="title">Login Form</h3>
       </div>
@@ -10,8 +10,8 @@
           <svg-icon icon-class="user" />
         </span>
         <el-input
-          v-model="loginForm.username"
           ref="username"
+          v-model="loginForm.username"
           placeholder="Username"
           name="username"
           type="text"
@@ -26,9 +26,9 @@
         </span>
         <el-input
           :key="passwordType"
-          :type="passwordType"
-          v-model="loginForm.password"
           ref="password"
+          v-model="loginForm.password"
+          :type="passwordType"
           placeholder="Password"
           name="password"
           tabindex="2"
@@ -47,54 +47,55 @@
 </template>
 
 <script>
-import { METHODS } from "http";
+// import { METHODS } from "http";
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {},
   data() {
     return {
       loginForm: {
-        username: "admin",
-        password: "111111"
+        username: 'admin',
+        password: '111111'
       },
-      passwordType: "password",
+      passwordType: 'password',
       loading: false,
       otherQuery: {}
-    };
+    }
   },
   mounted() {
-    if (this.loginForm.username === "") {
-      this.$refs.username.focus();
-    } else if (this.loginForm.password === "") {
-      this.$refs.password.focus();
+    if (this.loginForm.username === '') {
+      this.$refs.username.focus()
+    } else if (this.loginForm.password === '') {
+      this.$refs.password.focus()
     }
   },
   methods: {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.loading = true;
+          this.loading = true
           this.$store
-            .dispatch("user/login", this.loginForm)
+            .dispatch('dashboard', this.loginForm)
             .then(() => {
               this.$router.push({
-                path: this.redirect || "/",
+                path: this.redirect || '/',
                 query: this.otherQuery
-              });
-              this.loading = false;
+              })
+              this.loading = false
             })
             .catch(err => {
-              this.loading = false;
-            });
+              console.log(err)
+              this.loading = false
+            })
         } else {
-          console.log("error submit!");
-          return false;
+          console.log('error submit!')
+          return false
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
