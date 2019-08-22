@@ -7,6 +7,7 @@ import '@/icons'
 import Element from 'element-ui'
 import './styles/element-variables.scss'
 import '@/styles/index.scss' // global css
+import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
 Vue.use(Element, {
   // size: Cookies.get('size') || 'medium',

@@ -2,11 +2,11 @@
 const path = require('path')
 const pkg = require('./package.json')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
-//const name = pkg.name || 'vue-element-admin' // page title
+// const name = pkg.name || 'vue-element-admin' // page title
 const name = 'golang-后台管理系统' // page title
 const port = 9527 // dev port
 
@@ -32,9 +32,9 @@ module.exports = {
       errors: true
     },
     proxy: {
-      '/api/':{
-        target:'http://127.0.0.1:8080',
-        changeOrigin:true
+      '/api/': {
+        target: 'http://127.0.0.1:8080',
+        changeOrigin: true
       },
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
@@ -58,7 +58,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack(config) {
+  chainWebpack (config) {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
 
